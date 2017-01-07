@@ -47,12 +47,12 @@
         <form class="form-signin" role="form" method="POST" action="{{ url('/login') }}">
             {{ csrf_field() }}
             <div class="{{ $errors->has('email') ? ' has-error' : '' }}">
-                <label for="email" class="sr-only">Email address</label>
-                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}"
-                       placeholder="Email" required autofocus>
-                @if ($errors->has('email'))
+                <label for="email" class="sr-only">ID</label>
+                <input id="id" type="text" class="form-control" name="id" value="{{ old('id') }}"
+                       placeholder="ID" required autofocus>
+                @if ($errors->has('id'))
                     <span class="help-block">
-                        <strong>{{ $errors->first('email') }}</strong>
+                        <strong>{{ $errors->first('id') }}</strong>
                     </span>
                 @endif
 
