@@ -11,6 +11,5 @@
 |
 */
 
-Route::get('/', function () {
-    return view('events.event');
-});
+
+Route::resource('event', 'EventController', ['only' => 'show']);

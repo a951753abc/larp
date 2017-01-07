@@ -14,11 +14,11 @@ class CreateUserEvent extends Migration
     public function up()
     {
         Schema::create('user_events', function (Blueprint $table) {
-            $table->increments('sn');
-            $table->integer('user_sn');
-            $table->integer('event_sn');
+            $table->increments('id');
+            $table->integer('user_id');
+            $table->integer('event_id');
             $table->timestamps();
-            $table->index('user_sn');
+            $table->index('user_id');
         });
     }
 

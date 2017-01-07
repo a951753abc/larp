@@ -15,7 +15,6 @@ class AddFieldToUserTable extends Migration
     {
         if (Schema::hasTable('users')) {
             Schema::table('users', function (Blueprint $table) {
-                $table->renameColumn('id', 'sn');
                 $table->tinyInteger('type')->default(config('const.user'));
                 $table->softDeletes();
             });
