@@ -10,7 +10,7 @@ class EventController extends Controller
     public function __construct()
     {
         /** 驗證登入 */
-        //$this->middleware('auth');
+        $this->middleware('auth');
     }
 
     /**
