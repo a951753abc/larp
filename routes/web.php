@@ -12,7 +12,7 @@
 */
 
 
-Route::resource('event', 'EventController', ['only' => 'show']);
+Route::resource('event', 'EventController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');

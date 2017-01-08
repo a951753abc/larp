@@ -37,7 +37,17 @@
         @endif
     </ul>
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto"></ul>
+        <ul class="navbar-nav mr-auto">
+            @yield('menu')
+            @if (Auth::check())
+                <?php $user = Auth::user()?>
+                @if ($user->type == config('const.user'))
+                    @include('menu.user')
+                @else
+                    @include('menu.admin')
+                @endif
+            @endif
+        </ul>
         @if (Auth::check())
         <form class="form-inline my-2 my-lg-0" id="logout-form" action=" {{ url('/logout') }}" method="POST">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
