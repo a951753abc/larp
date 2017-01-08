@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'BEST LARP PLAYER',
             'email' => 'blp@gmail.com',
-            'password' => '1234',
+            'password' => password_hash('1234', PASSWORD_DEFAULT),
         ]);
 
         DB::table('events')->insert([

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+use App\UserEvent;
 use Illuminate\Http\Request;
+use Auth;
 
 class EventController extends Controller
 {
@@ -52,6 +54,10 @@ class EventController extends Controller
      */
     public function show($id)
     {
+        $user = Auth::user();
+
+        $this->eventStore($user->id, $id);
+
         return view('events.event', ['event' => Event::findOrFail($id)]);
     }
 
@@ -87,5 +93,10 @@ class EventController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function eventStore($user_id, $id)
+    {
+        UserEvent::firstOrCreate(['user_id' => $user_id, 'event_id' => $id]);
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserEvent extends Migration
+class CreateEventInd extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateUserEvent extends Migration
      */
     public function up()
     {
-        Schema::create('user_events', function (Blueprint $table) {
+        Schema::create('event_ind', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
+            $table->string('user_id_array', 255);
             $table->integer('event_id');
+            $table->text('content');
             $table->timestamps();
-            $table->index(['user_id', 'event_id']);
+            $table->index('event_id');
         });
     }
 
@@ -29,6 +30,6 @@ class CreateUserEvent extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_events');
+        Schema::dropIfExists('event_ind');
     }
 }
