@@ -16,10 +16,11 @@ class CreateEventInd extends Migration
         Schema::create('event_ind', function (Blueprint $table) {
             $table->increments('id');
             $table->string('user_id_array', 255);
-            $table->integer('event_id');
+            $table->integer('event_id')->unsigned();;
             $table->text('content');
             $table->timestamps();
-            $table->index('event_id');
+            $table->foreign('event_id')->references('id')->on('events')
+                ->onDelete('cascade');
         });
     }
 

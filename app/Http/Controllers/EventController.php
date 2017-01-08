@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+use App\EventInd;
 use App\UserEvent;
 use Illuminate\Http\Request;
 use Auth;
@@ -58,7 +59,21 @@ class EventController extends Controller
 
         $this->eventStore($user->id, $id);
 
-        return view('events.event', ['event' => Event::findOrFail($id)]);
+        $event = Event::findOrFail($id);
+        if (count($event->ind) > 0) {
+            $events = $event->ind;
+
+            foreach ($events as $eventValue) {
+                $res = $eventValue->whereRaw('FIND_IN_SET(?, user_id_array)', [$user->id])->get()->first();
+                if ($res) {
+                    $event->content = $res->content;
+                    break;
+                }
+            }
+        }
+
+
+        return view('events.event', ['event' => $event]);
     }
 
     /**
