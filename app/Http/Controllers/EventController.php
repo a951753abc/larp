@@ -23,7 +23,10 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+        $event = UserEvent::where('user_id', $user->id)->get();
+
+        return view('events.index', ['events' => $event]);
     }
 
     /**
@@ -64,9 +67,9 @@ class EventController extends Controller
             $events = $event->ind;
 
             foreach ($events as $eventValue) {
-                $res = $eventValue->whereRaw('FIND_IN_SET(?, user_id_array)', [$user->id])->get()->first();
-                if ($res) {
-                    $event->content = $res->content;
+                $user_id_array = array_filter(explode(',', $eventValue->user_id_array));
+                if (in_array($user->id, $user_id_array)) {
+                    $event->content = $eventValue->content;
                     break;
                 }
             }
