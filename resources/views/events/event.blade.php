@@ -9,5 +9,5 @@
             </div>
         </div>
     </div>
-
+    {!! QrCode::size(150)->generate(URL::route('event.show', $event['id'])); !!}
 @endsection
