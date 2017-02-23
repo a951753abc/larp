@@ -60,23 +60,33 @@ class EventController extends Controller
     {
         $user = Auth::user();
 
-        $this->eventStore($user->id, $id);
+        /** 檢查有無存入此事件，若否返回情報頁 */
+        try {
+            UserEvent::where('user_id', $user->id)->where('event_id', $id)->firstOrFail();
+            $event = Event::findOrFail($id);
+            if (count($event->ind) > 0) {
+                $events = $event->ind;
 
-        $event = Event::findOrFail($id);
-        if (count($event->ind) > 0) {
-            $events = $event->ind;
-
-            foreach ($events as $eventValue) {
-                $user_id_array = array_filter(explode(',', $eventValue->user_id_array));
-                if (in_array($user->id, $user_id_array)) {
-                    $event->content = $eventValue->content;
-                    break;
+                foreach ($events as $eventValue) {
+                    $user_id_array = array_filter(explode(',', $eventValue->user_id_array));
+                    if (in_array($user->id, $user_id_array)) {
+                        $event->content = $eventValue->content;
+                        break;
+                    }
                 }
             }
         }
-
-
+        catch (\Exception $e) {
+            return redirect('/event');
+        }
         return view('events.event', ['event' => $event]);
+    }
+
+    public function eventShow($id)
+    {
+        $user = Auth::user();
+        $this->eventStore($user->id, $id);
+        return redirect('/event/'.$id);
     }
 
     /**

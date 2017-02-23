@@ -16,3 +16,4 @@ Route::resource('event', 'EventController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/event.show/{id}', 'EventController@eventShow');
