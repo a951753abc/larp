@@ -5,7 +5,8 @@
     <div class="card">
         <ul class="list-group list-group-flush">
             @foreach($events as $event)
-                <li class="list-group-item" onclick="location.href='{{URL::route('event.show', $event->event_id)}}'">
+                <li class="list-group-item myMOUSE"
+                    onclick="location.href='{{URL::route('event.show', $event->event_id)}}'">
                     {{$event->event->name}}
                 </li>
             @endforeach

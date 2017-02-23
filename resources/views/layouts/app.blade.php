@@ -16,6 +16,7 @@
         body {
             padding-top: 2rem;
         }
+        .myMOUSE{ cursor: pointer; }
     </style>
     <!-- Scripts -->
     <script>
