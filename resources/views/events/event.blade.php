@@ -5,7 +5,7 @@
         <div class="card" style="width: 23rem;">
             <div class="card-block">
                 <h4 class="card-title">{{$event['name']}}</h4>
-                <p class="card-text">{{$event['content']}}</p>
+                <span class="card-text">{!! nl2br($event['content']) !!}</span>
             </div>
         </div>
     </div>

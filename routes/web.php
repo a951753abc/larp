@@ -17,3 +17,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 Route::get('/event.show/{id}', 'EventController@eventShow');
+Route::get('/admin', 'EventController@adminIndex');

@@ -29,14 +29,28 @@ class EventController extends Controller
         return view('events.index', ['events' => $event]);
     }
 
+    public function adminIndex()
+    {
+        $user = Auth::user();
+        if ($user->type != config('const.admin')) {
+            return redirect('/event');
+        }
+        $event = Event::All();
+        return view('events.admin-index', ['events' => $event]);
+    }
+
     /**
-     * Show the form for creating a new resource.
+     * 只有管理者可以新增
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        $user = Auth::user();
+        if ($user->type != config('const.admin')) {
+            return redirect('/event');
+        }
+        return view('events.store');
     }
 
     /**
@@ -47,7 +61,11 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $event = new Event();
+        $event->name = $request->input('name');
+        $event->content = $request->input('content');
+        $event->save();
+        return redirect('/admin');
     }
 
     /**
@@ -97,7 +115,18 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = Auth::user();
+        if ($user->type != config('const.admin')) {
+            return redirect('/event');
+        }
+        try {
+            $event = Event::findOrFail($id);
+        }
+        catch (\Exception $e) {
+            return redirect('/event');
+        }
+
+        return view('events.store', ['event' => $event]);
     }
 
     /**
@@ -109,7 +138,17 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $event = Event::findOrFail($id);
+        }
+        catch (\Exception $e) {
+            return redirect('/event');
+        }
+
+        $event->name = $request->input('name');
+        $event->content = $request->input('content');
+        $event->save();
+        return redirect('/event/'.$id.'/edit');
     }
 
     /**
