@@ -17,6 +17,7 @@ class CreateEvent extends Migration
             $table->increments('id');
             $table->string('name');
             $table->text('content');
+            $table->tinyInteger('type')->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

@@ -29,14 +29,14 @@ class EventController extends Controller
         return view('events.index', ['events' => $event]);
     }
 
-    public function adminIndex()
+    public function adminIndex($type)
     {
         $user = Auth::user();
         if ($user->type != config('const.admin')) {
             return redirect('/event');
         }
-        $event = Event::All();
-        return view('events.admin-index', ['events' => $event]);
+        $event = Event::where('type', $type)->orderBy('id', 'asc')->get();
+        return view('events.admin-index', ['events' => $event, 'type' => $type]);
     }
 
     /**
@@ -62,10 +62,11 @@ class EventController extends Controller
     public function store(Request $request)
     {
         $event = new Event();
+        $event->type = $request->input('type');
         $event->name = $request->input('name');
         $event->content = $request->input('content');
         $event->save();
-        return redirect('/admin');
+        return redirect('/admin/'.$request->input('type'));
     }
 
     /**
@@ -147,6 +148,7 @@ class EventController extends Controller
 
         $event->name = $request->input('name');
         $event->content = $request->input('content');
+        $event->type = $request->input('type');
         $event->save();
         return redirect('/event/'.$id.'/edit');
     }
