@@ -15,6 +15,10 @@
                         <option value="3" {{ isset($event) && $event->type == 3 ? 'selected' : ''}}>平行世界的歷史幻影</option>
                         <option value="4" {{ isset($event) && $event->type == 4 ? 'selected' : ''}}>學校</option>
                         <option value="5" {{ isset($event) && $event->type == 5 ? 'selected' : ''}}>警察局</option>
+                        <option value="6" {{ isset($event) && $event->type == 6 ? 'selected' : ''}}>幻想漂流──商店街(不分類)</option>
+                        <option value="7" {{ isset($event) && $event->type == 7 ? 'selected' : ''}}>幻想漂流──不流通的私人情報</option>
+                        <option value="8" {{ isset($event) && $event->type == 8 ? 'selected' : ''}}>幻想漂流──學校</option>
+                        <option value="9" {{ isset($event) && $event->type == 9 ? 'selected' : ''}}>幻想漂流──警察局</option>
                     </select>
                 </div>
             </div>

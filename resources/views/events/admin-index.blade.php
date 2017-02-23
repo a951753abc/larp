@@ -11,6 +11,14 @@
         學校
     @elseif($type == 5)
         警察局
+    @elseif($type == 6)
+        幻想漂流──商店街(不分類)
+    @elseif($type == 7)
+        幻想漂流──不流通的私人情報
+    @elseif($type == 8)
+        幻想漂流──學校
+    @elseif($type == 9)
+        幻想漂流──警察局
     @endif
     <div class="form-inline">
         <button class="btn btn-success myMOUSE" onclick="location.href='/admin/1'">
@@ -31,6 +39,23 @@
         &nbsp;
         <button class="btn btn-success myMOUSE" onclick="location.href='/admin/5'">
             警察局
+        </button>
+    </div>
+    <div class="form-inline">
+        <button class="btn btn-success myMOUSE" onclick="location.href='/admin/6'">
+            幻想漂流──商店街(不分類)
+        </button>
+        &nbsp;
+        <button class="btn btn-danger myMOUSE" onclick="location.href='/admin/7'">
+            幻想漂流──不流通的私人情報
+        </button>
+        &nbsp;
+        <button class="btn btn-success myMOUSE" onclick="location.href='/admin/8'">
+            幻想漂流──學校
+        </button>
+        &nbsp;
+        <button class="btn btn-danger myMOUSE" onclick="location.href='/admin/9'">
+            幻想漂流──警察局
         </button>
     </div>
     <div class="card">
