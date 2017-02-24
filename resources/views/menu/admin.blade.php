@@ -4,3 +4,6 @@
 <li class="nav-item active">
     <a class="nav-link" href="/event/create">新增情報</a>
 </li>
+<li class="nav-item active">
+    <a class="nav-link" href="/event.select">抽情報</a>
+</li>

@@ -51,6 +51,34 @@ class EventController extends Controller
         return view('events.admin-index', ['events' => $event, 'type' => $type]);
     }
 
+    public function select()
+    {
+        $user = Auth::user();
+        if ($user->type != config('const.admin')) {
+            return redirect('/event');
+        }
+        $user = User::where('type', config('const.user'))->get()->toArray();
+        return view('events.select', ['users' => $user]);
+    }
+
+    public function selectResult(Request $request)
+    {
+        $type = $request->input('type');
+        $user_id = $request->input('name');
+        $event_id = UserEvent::where('user_id', $user_id)->get();
+        $event = null;
+        if ($event_id->count() > 0) {
+            foreach ($event_id as $event) {
+                $userEvent[] = $event->event_id;
+            }
+            $event = Event::where('type', $type)->whereNotIn('id', $userEvent)->inRandomOrder()->get();
+            if ($event->count() > 0) {
+                $event = $event->first();
+            }
+        }
+        return view('events.result', ['event' => $event]);
+    }
+
     /**
      * 只有管理者可以新增
      *
