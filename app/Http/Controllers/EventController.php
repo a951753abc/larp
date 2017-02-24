@@ -29,6 +29,17 @@ class EventController extends Controller
         return view('events.index', ['events' => $event]);
     }
 
+    public function token()
+    {
+        $events = Event::All();
+        foreach ($events as $event) {
+            $token = $this->getToken();
+            $event->token = $token;
+            $event->save();
+        }
+        exit;
+    }
+
     public function adminIndex($type)
     {
         $user = Auth::user();
@@ -101,10 +112,10 @@ class EventController extends Controller
         return view('events.event', ['event' => $event]);
     }
 
-    public function eventShow($id)
+    public function eventShow($token)
     {
         $user = Auth::user();
-        $this->eventStore($user->id, $id);
+        $id = $this->eventStore($user->id, $token);
         return redirect('/event/'.$id);
     }
 
@@ -164,8 +175,20 @@ class EventController extends Controller
         //
     }
 
-    private function eventStore($user_id, $id)
+    private function eventStore($user_id, $token)
     {
-        UserEvent::firstOrCreate(['user_id' => $user_id, 'event_id' => $id]);
+        $event = Event::where('token', $token)->get()->first();
+        UserEvent::firstOrCreate(['user_id' => $user_id, 'event_id' => $event->id]);
+        return $event->id;
+    }
+
+    private function getToken()
+    {
+        $token = md5 (uniqid (rand()));
+        $check = Event::where('token', $token)->get()->first();
+        if ($check) {
+            $token = $this->getToken();
+        }
+        return $token;
     }
 }

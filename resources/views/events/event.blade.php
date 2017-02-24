@@ -9,5 +9,5 @@
             </div>
         </div>
     </div>
-    {!! QrCode::size(150)->generate(URL::route('event.show', $event['id'])); !!}
+    {!! QrCode::size(150)->generate('http://larp.ddns.net/event.show/'.$event['token']); !!}
 @endsection

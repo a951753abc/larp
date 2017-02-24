@@ -19,43 +19,50 @@
         幻想漂流──學校
     @elseif($type == 9)
         幻想漂流──警察局
+    @elseif($type == 10)
+        事件
     @endif
     <div class="form-inline">
-        <button class="btn btn-success myMOUSE" onclick="location.href='/admin/1'">
+        <button class="btn btn-sm btn-success myMOUSE" onclick="location.href='/admin/1'">
             商店街(不分類)
         </button>
         &nbsp;
-        <button class="btn btn-danger myMOUSE" onclick="location.href='/admin/2'">
+        <button class="btn btn-sm btn-danger myMOUSE" onclick="location.href='/admin/2'">
             不流通的私人情報
         </button>
         &nbsp;
-        <button class="btn btn-success myMOUSE" onclick="location.href='/admin/3'">
+        <button class="btn btn-sm btn-success myMOUSE" onclick="location.href='/admin/3'">
             平行世界的歷史幻影
         </button>
         &nbsp;
-        <button class="btn btn-danger myMOUSE" onclick="location.href='/admin/4'">
+        <button class="btn btn-sm btn-danger myMOUSE" onclick="location.href='/admin/4'">
             學校
         </button>
         &nbsp;
-        <button class="btn btn-success myMOUSE" onclick="location.href='/admin/5'">
+        <button class="btn btn-sm btn-success myMOUSE" onclick="location.href='/admin/5'">
             警察局
         </button>
     </div>
     <div class="form-inline">
-        <button class="btn btn-success myMOUSE" onclick="location.href='/admin/6'">
+        <button class="btn btn-sm btn-success myMOUSE" onclick="location.href='/admin/6'">
             幻想漂流──商店街(不分類)
         </button>
         &nbsp;
-        <button class="btn btn-danger myMOUSE" onclick="location.href='/admin/7'">
+        <button class="btn btn-sm btn-danger myMOUSE" onclick="location.href='/admin/7'">
             幻想漂流──不流通的私人情報
         </button>
         &nbsp;
-        <button class="btn btn-success myMOUSE" onclick="location.href='/admin/8'">
+        <button class="btn btn-sm btn-success myMOUSE" onclick="location.href='/admin/8'">
             幻想漂流──學校
         </button>
         &nbsp;
-        <button class="btn btn-danger myMOUSE" onclick="location.href='/admin/9'">
+        <button class="btn btn-sm btn-danger myMOUSE" onclick="location.href='/admin/9'">
             幻想漂流──警察局
+        </button>
+    </div>
+    <div class="form-inline">
+        <button class="btn btn-sm btn-success myMOUSE" onclick="location.href='/admin/10'">
+            事件
         </button>
     </div>
     <div class="card">
@@ -64,12 +71,12 @@
             @foreach($events as $event)
                 <li class="list-group-item">
                     {{$event->name}}
-                    &nbsp;&nbsp;
-                    <button class="btn btn-info myMOUSE" onclick="location.href='/event.show/{{$event->id}}'">瀏覽</button>
+                    <BR>
+                    <button class="btn btn-sm btn-info myMOUSE" onclick="location.href='/event.show/{{$event->id}}'">瀏覽</button>
                     &nbsp;
-                    <button class="btn btn-primary myMOUSE" onclick="location.href='/event/{{$event->id}}/edit'">編輯</button>
+                    <button class="btn btn-sm btn-primary myMOUSE" onclick="location.href='/event/{{$event->id}}/edit'">編輯</button>
                     &nbsp;
-                    <button class="btn btn-secondary myMOUSE" onclick="location.href='/user.event/{{$event->id}}/create'">分配情報給角色</button>
+                    <button class="btn btn-sm btn-secondary myMOUSE" onclick="location.href='/user.event/{{$event->id}}/create'">分配情報</button>
                     &nbsp;
                     已分配角色:
                     <?php $num = 1;?>
