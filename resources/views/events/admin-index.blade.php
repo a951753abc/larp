@@ -72,7 +72,7 @@
                 <li class="list-group-item">
                     {{$event->name}}
                     <BR>
-                    <button class="btn btn-sm btn-info myMOUSE" onclick="location.href='/event.show/{{$event->id}}'">瀏覽</button>
+                    <button class="btn btn-sm btn-info myMOUSE" onclick="location.href='/admin.event.show/{{$event->id}}'">瀏覽</button>
                     &nbsp;
                     <button class="btn btn-sm btn-primary myMOUSE" onclick="location.href='/event/{{$event->id}}/edit'">編輯</button>
                     &nbsp;

@@ -7,6 +7,7 @@ use App\EventInd;
 use App\UserEvent;
 use Illuminate\Http\Request;
 use Auth;
+use App\User;
 
 class EventController extends Controller
 {
@@ -116,6 +117,15 @@ class EventController extends Controller
     {
         $user = Auth::user();
         $id = $this->eventStore($user->id, $token);
+        return redirect('/event/'.$id);
+    }
+
+    public function adminEventShow($id)
+    {
+        $user = Auth::user();
+        if ($user->type != config('const.admin')) {
+            return redirect('/event');
+        }
         return redirect('/event/'.$id);
     }
 
