@@ -15,6 +15,6 @@ class Event extends Model
 
     public function userEvent()
     {
-        return $this->hasMany('App\UserEvent');
+        return $this->hasMany('App\UserEvent')->orderBy('user_id');
     }
 }

@@ -3,9 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
+use App\Event;
+use App\User;
+use App\UserEvent;
 
 class UserEventController extends Controller
 {
+    public function __construct()
+    {
+        /** 驗證登入 */
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -21,9 +31,16 @@ class UserEventController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($event_id)
     {
-        //
+        $user = Auth::user();
+        if ($user->type != config('const.admin')) {
+            return redirect('/event');
+        }
+        $event = Event::find($event_id);
+        $userEvent = UserEvent::where('event_id', $event_id)->get();
+        $user = User::where('type', config('const.user'))->get();
+        return view('user-event.store', ['event' => $event, 'users' => $user, 'user_event' => $userEvent]);
     }
 
     /**
@@ -34,7 +51,21 @@ class UserEventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $event_id = $request->input('event_id');
+        $event = Event::find($event_id);
+        $users = $request->input('user');
+        if ($users) {
+            /** 刪除後重建 */
+            UserEvent::where('event_id', $event_id)->delete();
+            foreach ($users as $user) {
+                $userEvent = new UserEvent();
+                $userEvent->user_id = $user;
+                $userEvent->event_id = $event_id;
+                $userEvent->save();
+            }
+        }
+        return redirect('/admin/'.$event->type);
     }
 
     /**

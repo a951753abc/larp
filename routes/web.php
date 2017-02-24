@@ -13,10 +13,10 @@
 
 
 Route::resource('event', 'EventController');
-Route::resource('user.event', 'UserEventController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
-Route::get('/home.test', 'HomeController@test');
 Route::get('/event.show/{id}', 'EventController@eventShow');
 Route::get('/admin/{type}', 'EventController@adminIndex');
+Route::get('/user.event/{event_id}/create', 'UserEventController@create');
+Route::post('/user.event', 'UserEventController@store');

@@ -69,7 +69,7 @@
                     &nbsp;
                     <button class="btn btn-primary myMOUSE" onclick="location.href='/event/{{$event->id}}/edit'">編輯</button>
                     &nbsp;
-                    <button class="btn btn-secondary myMOUSE" onclick="location.href='/event/{{$event->id}}/edit'">分配情報給角色</button>
+                    <button class="btn btn-secondary myMOUSE" onclick="location.href='/user.event/{{$event->id}}/create'">分配情報給角色</button>
                     &nbsp;
                     已分配角色:
                     <?php $num = 1;?>
