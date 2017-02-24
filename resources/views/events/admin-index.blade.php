@@ -68,7 +68,20 @@
                     <button class="btn btn-info myMOUSE" onclick="location.href='/event.show/{{$event->id}}'">瀏覽</button>
                     &nbsp;
                     <button class="btn btn-primary myMOUSE" onclick="location.href='/event/{{$event->id}}/edit'">編輯</button>
-
+                    &nbsp;
+                    <button class="btn btn-secondary myMOUSE" onclick="location.href='/event/{{$event->id}}/edit'">分配情報給角色</button>
+                    &nbsp;
+                    已分配角色:
+                    <?php $num = 1;?>
+                    @foreach($event->userEvent as $userEvent)
+                        @if($num > 1)
+                            、
+                        @endif
+                        @if ($userEvent->user->type == config('const.user'))
+                            {{$userEvent->user->name}}
+                            <?php $num++;?>
+                        @endif
+                    @endforeach
                 </li>
             @endforeach
         </ul>

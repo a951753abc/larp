@@ -12,4 +12,9 @@ class Event extends Model
     {
         return $this->hasMany('App\EventInd');
     }
+
+    public function userEvent()
+    {
+        return $this->hasMany('App\UserEvent');
+    }
 }
