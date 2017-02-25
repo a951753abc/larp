@@ -15,6 +15,7 @@
                         <option value="6">幻想漂流──商店街(不分類)</option>
                         <option value="8">幻想漂流──學校</option>
                         <option value="9">幻想漂流──警察局</option>
+                        <option value="12">幻想圖書館</option>
                     </select>
                 </div>
             </div>
@@ -26,6 +27,7 @@
                         @foreach($users as $user)
                             <option value="{{$user['id']}}">{{$user['name']}}</option>
                         @endforeach
+                            <option value="18">幻想圖書館</option>
                     </select>
                 </div>
             </div>

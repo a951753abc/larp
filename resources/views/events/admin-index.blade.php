@@ -21,6 +21,12 @@
         幻想漂流──警察局
     @elseif($type == 10)
         事件
+    @elseif($type == 11)
+        幻想漂流──事件
+    @elseif($type == 12)
+        幻想圖書館
+    @elseif($type == 13)
+        幻想圖書館──第一印象
     @endif
     <div class="form-inline">
         <button class="btn btn-sm btn-success myMOUSE" onclick="location.href='/admin/1'">
@@ -63,6 +69,18 @@
     <div class="form-inline">
         <button class="btn btn-sm btn-success myMOUSE" onclick="location.href='/admin/10'">
             事件
+        </button>
+        &nbsp;
+        <button class="btn btn-sm btn-danger myMOUSE" onclick="location.href='/admin/11'">
+            幻想漂流──事件
+        </button>
+        &nbsp;
+        <button class="btn btn-sm btn-success myMOUSE" onclick="location.href='/admin/12'">
+            幻想圖書館
+        </button>
+        &nbsp;
+        <button class="btn btn-sm btn-danger myMOUSE" onclick="location.href='/admin/13'">
+            幻想圖書館──第一印象
         </button>
     </div>
     <div class="card">

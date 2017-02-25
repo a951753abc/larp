@@ -105,6 +105,7 @@ class EventController extends Controller
         $event->type = $request->input('type');
         $event->name = $request->input('name');
         $event->content = $request->input('content');
+        $event->token = $this->getToken();
         $event->save();
         return redirect('/admin/'.$request->input('type'));
     }
@@ -154,6 +155,7 @@ class EventController extends Controller
         if ($user->type != config('const.admin')) {
             return redirect('/event');
         }
+        UserEvent::firstOrCreate(['user_id' => $user->id, 'event_id' => $id]);
         return redirect('/event/'.$id);
     }
 

@@ -64,9 +64,10 @@
     @yield('content')
 </div>
 
-
+    <div id='app'></div>
     <!-- Scripts -->
     <script src="https://cdn.bootcss.com/jquery/1.12.3/jquery.min.js"></script>
+    <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

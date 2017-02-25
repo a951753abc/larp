@@ -20,6 +20,9 @@
                         <option value="8" {{ isset($event) && $event->type == 8 ? 'selected' : ''}}>幻想漂流──學校</option>
                         <option value="9" {{ isset($event) && $event->type == 9 ? 'selected' : ''}}>幻想漂流──警察局</option>
                         <option value="10" {{ isset($event) && $event->type == 10 ? 'selected' : ''}}>事件</option>
+                        <option value="11" {{ isset($event) && $event->type == 11 ? 'selected' : ''}}>幻想漂流──事件</option>
+                        <option value="12" {{ isset($event) && $event->type == 12 ? 'selected' : ''}}>幻想圖書館</option>
+                        <option value="13" {{ isset($event) && $event->type == 13 ? 'selected' : ''}}>幻想圖書館──第一印象</option>
                     </select>
                 </div>
             </div>
