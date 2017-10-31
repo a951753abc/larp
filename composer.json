@@ -6,7 +6,7 @@
     "type": "project",
     "require": {
         "php": ">=5.6.4",
-        "laravel/framework": "5.3.*",
+        "laravel/framework": "5.5.*",
         "barryvdh/laravel-ide-helper": "^2.2",
         "simplesoftwareio/simple-qrcode": "~1",
         "maatwebsite/excel": "~2.1.0"
@@ -16,7 +16,7 @@
         "doctrine/dbal": "^2.5",
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~5.0",
+        "phpunit/phpunit": "~6.0",
         "symfony/css-selector": "3.1.*",
         "symfony/dom-crawler": "3.1.*"
     },
